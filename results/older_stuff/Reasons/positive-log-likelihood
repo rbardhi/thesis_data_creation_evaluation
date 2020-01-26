@@ -1,0 +1,8 @@
+
+
+So there's nothing inherently wrong with positive log likelihoods, because likelihoods aren't strictly speaking probabilities, they're densities. When they occur, it is typically in cases with very few variables and very small variances. For raw data, we define the log likelihood of a model as the density of the model-implied multivariate normal distribution for each observed data raw. If we had three values (0, 1, 2) and fit a model with a mean of 1 and variance of 2/3, we'd get densities of .231, .487 and .231. If we use 0, .01 and .02 and fit mean .01 variance 2/300 instead, those densities become 2.31, 4.87 and 2.31. The likelihoods change with the different scaling, and one yields a positive log-likelihood and one a negative, but they're the same model.
+
+The issue with low variance items is not about how weird positive likelihoods look, but that variances can't go below zero, and very low variances run an increased risk of the optimizer picking a negative variance or your model bumping up against whatever bound you enforce.
+
+Happy modeling!
+
